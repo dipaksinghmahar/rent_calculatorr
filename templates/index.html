@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent Calculator</title>
+
+    <!-- Link external CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>💰 Rent Calculator</h1>
+
+    <form method="POST">
+        <input type="number" step="any" name="rent" placeholder="Total Rent" required>
+        <input type="number" step="any" name="food" placeholder="Food Expense" required>
+        <input type="number" step="any" name="electricity" placeholder="Electricity Units" required>
+        <input type="number" step="any" name="charge" placeholder="Charge per Unit" required>
+        <input type="number" name="persons" placeholder="Number of Persons" min="1" required>
+
+        <button type="submit">Calculate</button>
+    </form>
+
+    {% if result is not none %}
+        <div class="result">
+            Each person pays: ₹ {{ result }}
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
